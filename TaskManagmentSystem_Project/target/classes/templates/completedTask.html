@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Completed Tasks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2; /* Light Gray background color */
+        }
+        .container {
+            text-align: center; /* Center align content */
+            margin-top: 50px; /* Add space from the top */
+        }
+        .table {
+            background-color: #fff; /* White background color for table */
+            border-radius: 10px; /* Rounded corners for table */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+        h1 {
+            color: #333; /* Dark text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Completed Tasks</h1>
+        <table class="table mt-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr th:each="task : ${completedTasks}">
+                    <td th:text="${task.id}">ID</td>
+                    <td th:text="${task.title}">Title</td>
+                    <td th:text="${task.description}">Description</td>
+                    <td th:text="${#dates.format(task.dueDate, 'yyyy-MM-dd HH:mm:ss')}">Due Date</td>
+                    <td th:text="${task.completed ? 'Yes' : 'Yes'}">Completed</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
